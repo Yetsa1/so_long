@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+// Function to load the game images
+
 void	load_image(void **img, void *mlx, char *path, t_game *game)
 {
 	int	img_width;
@@ -25,6 +27,8 @@ void	load_image(void **img, void *mlx, char *path, t_game *game)
 	}
 }
 
+// Function to assign the images to the structure
+
 void	load_images(t_game *game)
 {
 	load_image(&game->floor_img, game->win.mlx, "img/floor.xpm", game);
@@ -33,6 +37,8 @@ void	load_images(t_game *game)
 	load_image(&game->collectible_img, game->win.mlx, "img/star.xpm", game);
 	load_image(&game->exit_img, game->win.mlx, "img/portal_redimension.xpm", game);
 }
+
+// Allows a clean start
 
 void	initialize_game(t_game *game)
 {
@@ -53,6 +59,8 @@ void	initialize_game(t_game *game)
 	mlx_hook(game->win.win, 17, 0, (void *)close_game, game);
 	mlx_loop(game->win.mlx);
 }
+
+// Validates the *.ber file
 
 int	is_valid_file(char *filename)
 {
