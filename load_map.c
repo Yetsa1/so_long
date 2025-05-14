@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+/*This function reads *.ber files and duplicates them, returning the copy*/
+
 char	*read_map_file(char *file_path)
 {
 	int		fd;
@@ -19,10 +21,10 @@ char	*read_map_file(char *file_path)
 	ssize_t	bytes_read;
 	char	*str_map;
 
-	fd = open(file_path, O_RDONLY);
-	if (fd < 0)
+	fd = open(file_path, O_RDONLY); //read *.ber path, just open and read
+	if (fd < 0)//verify errors
 		return (NULL);
-	bytes_read = read(fd, buffer, 1023);
+	bytes_read = read(fd, buffer, 1023); //read bytes
 	close(fd);
 	if (bytes_read <= 0)
 		return (NULL);
@@ -30,6 +32,8 @@ char	*read_map_file(char *file_path)
 	str_map = ft_strdup(buffer);
 	return (str_map);
 }
+
+/*Map validity conditions, if not met, this function called to end the program execution*/
 
 int	validate_map_content(char **map, t_game *game)
 {
@@ -57,6 +61,8 @@ int	validate_map_content(char **map, t_game *game)
 	return (1);
 }
 
+/*Function to free the map in case an error occurred*/
+
 void	free_map(char **map)
 {
 	int	i;
@@ -75,11 +81,15 @@ void	free_map(char **map)
 	}
 }
 
+/*Converts the full map string into a double pointer (matrix),
+stores it in s_game, checks if the map is rectangular,
+and returns a copy of the matrix.*/
+
 char	**initialize_map(char *str_map, t_game *game)
 {
-	game->map_copy = ft_split(str_map, '\n');
-	game->map = ft_split(str_map, '\n');
-	if (!game->map_copy || !game->map)
+	game->map_copy = ft_split(str_map, '\n');//Contains the entire map as a string with newline characters
+	game->map = ft_split(str_map, '\n');//The same
+	if (!game->map_copy || !game->map)// If one or the other fails, free the resources and return NULL
 	{
 		write(1, "map NULL\n", 10);
 		free_map(game->map_copy);
@@ -98,8 +108,13 @@ char	**initialize_map(char *str_map, t_game *game)
 		close_game(game);
 		return (NULL);
 	}
-	return (game->map_copy);
+	return (game->map_copy);// Returns the final valid copy
 }
+
+/* Responsible for reading, validating, and preparing the map for the game
+Receives the duplicate of the map
+Converts the map into a matrix
+return the map*/
 
 char	**load_map(char *file_path, t_game *game)
 {
