@@ -76,7 +76,6 @@ int		count_exits(char **map, int height);
 int		count_collectibles(char **map, int height);
 int		count_player(char **map, int height);
 int		validate_walls(char **map, int width, int height);
-int		is_surrounded_by_walls(char **map, int width, int height);
 void	flood_fill(t_game *game, int x, int y);
 int		game_conditions(t_game *game);
 int		check_items(t_game *game);
