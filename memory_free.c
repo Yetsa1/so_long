@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+// Frees memory of the copied map and destroys graphic resources, but does not close the game yet
+
 void	internal_close_game(t_game *game)
 {
 	int	i;
@@ -36,6 +38,8 @@ void	internal_close_game(t_game *game)
 		game->win.win = NULL;
 	}
 }
+
+// Frees the main map, closes and frees MiniLibX, and exits the program
 
 void	close_game(t_game *game)
 {
@@ -63,6 +67,8 @@ void	close_game(t_game *game)
 	write(1, "game cerrado.\n", 15);
 	exit(0);
 }
+
+// Frees the graphical resources handled by MiniLibX
 
 void	free_resources(t_game *game)
 {
