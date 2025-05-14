@@ -12,6 +12,8 @@
 
 #include "so_long.h"
 
+// Verifies that the number of items meets the minimum required
+
 int	run_check_items(t_game *game)
 {
 	int	collects;
@@ -25,6 +27,8 @@ int	run_check_items(t_game *game)
 		return (1);
 	return (0);
 }
+
+// Checks whether the map has no more 'C' (collectibles) and 'E' (exit) tiles left
 
 int	check_items(t_game *game)
 {
@@ -50,6 +54,9 @@ int	game_conditions(t_game *game)
 	return (1);
 }
 
+// Checks from the initial position of 'P' whether it can reach all 'C' and the 'E',
+// ensuring there is a valid path for 'P'
+
 void	flood_fill(t_game *game, int x, int y)
 {
 	if (game->map[x][y] == '1' || game->map[x][y] == 'V')
@@ -60,6 +67,8 @@ void	flood_fill(t_game *game, int x, int y)
 	flood_fill(game, x, y - 1);
 	flood_fill(game, x, y + 1);
 }
+
+// Checks that all rows of the map have the same length
 
 int	is_rectangular_map(char **map)
 {
