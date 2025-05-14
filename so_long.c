@@ -12,11 +12,15 @@
 
 #include "so_long.h"
 
+// Updates the player's current coordinates within the t_game structure
+
 void	update(t_game *game, int x, int y)
 {
 	game->pos_x = x;
 	game->pos_y = y;
 }
+
+// Draws the entire map cell by cell and places the corresponding images using the put_image function
 
 void	render_map(t_game *game)
 {
@@ -36,6 +40,12 @@ void	render_map(t_game *game)
 	}
 }
 
+// Handles movement input:
+// - Checks if the player can move (not into a wall)
+// - Updates the internal map and player position if valid
+// - Increments the move counter for 'P'
+// - Displays the move count in the terminal
+
 void	move_player(t_game *game, int x, int y)
 {
 	char	*move_str;
@@ -51,6 +61,8 @@ void	move_player(t_game *game, int x, int y)
 	free(move_str);
 	render_map(game);
 }
+
+// Detects the keys pressed by the player
 
 int	handle_key(int keycode, t_game *game)
 {
