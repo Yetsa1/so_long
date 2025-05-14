@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
+/*Function responsible for finding the exits*/
 int	count_exits(char **map, int height)
 {
 	int	count;
@@ -33,7 +33,7 @@ int	count_exits(char **map, int height)
 	}
 	return (count);
 }
-
+/*Function responsible for counting the collectibles*/
 int	count_collectibles(char **map, int height)
 {
 	int	count;
@@ -55,7 +55,7 @@ int	count_collectibles(char **map, int height)
 	}
 	return (count);
 }
-
+/*Function responsible for counting the player*/
 int	count_player(char **map, int height)
 {
 	int	count;
@@ -77,7 +77,7 @@ int	count_player(char **map, int height)
 	}
 	return (count);
 }
-
+/*Check that the rows and columns at the edges of the maps are wallas*/
 int	validate_walls(char **map, int width, int height)
 {
 	int	x;
