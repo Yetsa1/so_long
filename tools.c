@@ -12,6 +12,9 @@
 
 #include "so_long.h"
 
+// Locates the 'P' tile on the map and stores its coordinates in
+//the pos_x and pos_y fields, which are later used by the update function
+
 void	find_player(t_game *game)
 {
 	int	i;
@@ -47,6 +50,8 @@ int	ft_len(char **array)
 	return (i);
 }
 
+// Frees the memory of one or two matrices, if they exist
+
 void	free_arrays(char **map1, char **map2)
 {
 	int	i;
@@ -72,6 +77,9 @@ void	free_arrays(char **map1, char **map2)
 		free(map2);
 	}
 }
+
+// Assigns images to the structure and links them
+//to the corresponding character based on the map
 
 void	put_image(t_game *game, char tile, int x, int y)
 {
@@ -100,6 +108,11 @@ void	put_image(t_game *game, char tile, int x, int y)
 		close_game(game);
 	}
 }
+
+// Performs different actions depending on where the player moves:
+// collects 'C'; if the player reaches 'E' and there are no 'C' left on the map, the game ends.
+// Otherwise, the function returns. Moves the 'P' character to the new position if standing on '0',
+// removes 'P' from the previous position, and updates it to the new location.
 
 void	handle_tile_interaction(t_game *game, int x, int y)
 {
