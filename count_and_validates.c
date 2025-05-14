@@ -99,25 +99,3 @@ int	validate_walls(char **map, int width, int height)
 	}
 	return (1);
 }
-
-int	is_surrounded_by_walls(char **map, int width, int height)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < width)
-	{
-		if (map[0][x] != '1' || map[height - 1][x] != '1')
-			return (0);
-		x++;
-	}
-	y = 0;
-	while (y < height)
-	{
-		if (map[y][0] != '1' || map[y][width - 1] != '1')
-			return (0);
-		y++;
-	}
-	return (1);
-}
