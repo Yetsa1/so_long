@@ -24,7 +24,11 @@ void	internal_close_game(t_game *game)
 		while (i < game->map_height)
 		{
 			if (game->map_copy[i])
+			{
+				if(game->map == game->map_copy)
+					game->map = NULL;
 				free(game->map_copy[i]);
+			}
 			game->map_copy[i] = NULL;
 			i++;
 		}
