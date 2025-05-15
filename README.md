@@ -1,3 +1,6 @@
+valgrind --leak-check=full --show-leak-kinds=all ./so_long maps/mi_mapa.ber
+
+
 Reviewing so_long!!
 
 Example map:
